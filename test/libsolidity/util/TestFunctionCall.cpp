@@ -221,6 +221,10 @@ string TestFunctionCall::format(
 				stream << comment << m_call.expectations.comment << comment;
 			}
 		}
+
+		if (m_behaviours != nullptr)
+			for (auto& behaviour: *m_behaviours)
+				stream << behaviour->format(*this, _errorReporter, _linePrefix, _renderResult, _highlight);
 	};
 
 	formatOutput(m_call.displayMode == FunctionCall::DisplayMode::SingleLine);
